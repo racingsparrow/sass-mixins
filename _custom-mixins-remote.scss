@@ -59,9 +59,9 @@
 
 
 
-// color size transform spacing line-height align weight
+// color size transform spacing line-height align weight decoration
 
-@mixin type($f-color: null, $f-size: null, $f-transform: null, $f-spacing: null, $f-lineheight: null, $f-align: null, $f-weight: null) {
+@mixin type($f-color: null, $f-size: null, $f-transform: null, $f-spacing: null, $f-lineheight: null, $f-align: null, $f-weight: null, $f-decoration: none) {
 
   @if $f-color == 'null' {}
   @else {
@@ -96,6 +96,11 @@
   @if $f-weight == 'null' {}
   @else {
     font-weight: $f-weight;
+  }
+
+  @if $f-decoration == 'none' {text-decoration: none;}
+  @else {
+    text-decoration: $f-decoration;
   }
 
 //
