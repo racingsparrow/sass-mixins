@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+//           color size transf spacn line-heig  align weight  decora
+@include type(null, null, null, null, null, null, null, null);
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>type-null</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
