@@ -1,0 +1,405 @@
+
+
+//put snippet files in this folder:
+// /Users/richard/Library/Application Support/Sublime Text 2/Packages/User
+
+
+// -- sublime tab shortcuts
+// posa  -  positioning absolute z-index
+// posr  -  positioning relative nulls
+// font   -  font color, size, weight, align
+// shadow - box shadow
+// trans - @include transition mixin
+// class  -  .class { + border-border attr.}
+// cf   -    @include clearfix;
+// br   -   @include b(red);
+// bl  -   @include b(lime);
+// rad -   @include border-radius(4px);
+// after  -   :after snippet
+// icon  -   @include icon mixin
+// wh  -   width: 40px,  height: 40px
+
+
+
+// -- HTML shortcuts
+// divc  -  <div class="class"></div>
+// e  -   <em>50</em>
+
+
+
+@mixin custom-button {
+    //           color    size    transf      spacn line-hig align weight
+    @include type(white, rem(14), uppercase, 1.6px, 1.7em, bold, center);
+    @include font-light;
+    padding: 10px 26px;
+    border: 2px solid $white;
+    background-color: transparent;
+    display: block;
+
+    content:'Read More';
+
+    &:hover {
+      cursor: pointer;
+    }
+//
+}
+
+
+
+
+
+//converts all px values to rems
+@function rem($size: $font_size) {
+  @return ($size/$font_size)+rem;
+}
+
+
+
+
+
+
+
+// color size transform spacing line-height align weight
+
+@mixin type($f-color: null, $f-size: null, $f-transform: null, $f-spacing: null, $f-lineheight: null, $f-align: null, $f-weight: null) {
+
+  @if $f-color == 'null' {}
+  @else {
+    color: $f-color;
+  }
+
+  @if $f-size == 'null' {}
+  @else {
+    font-size: $f-size;
+  }
+
+  @if $f-transform == 'null' {}
+  @else {
+    text-transform: $f-transform;
+  }
+
+  @if $f-spacing == 'null' {}
+  @else {
+    letter-spacing: $f-spacing;
+  }
+
+  @if $f-lineheight == 'null' {}
+  @else {
+    line-height: $f-lineheight;
+  }
+
+  @if $f-align == 'null' {}
+  @else {
+    text-align: $f-align;
+  }
+
+  @if $f-weight == 'null' {}
+  @else {
+    font-weight: $f-weight;
+  }
+
+//
+}
+
+
+
+
+
+
+
+
+// // color size weight align
+
+// @mixin font($f-color: null, $f-size: 13px, $f-weight: normal, $f-align: null) {
+
+//   @if $f-color == 'null' {}
+//   @else {
+//     color: $f-color;
+//   }
+
+//   @if $f-size == 'null' {}
+//   @else {
+//     font-size: $f-size;
+//   }
+
+//   font-weight: $f-weight;
+
+//   @if $f-align == 'null' {}
+//   @else {
+//     text-align: $f-align;
+//   }
+// //
+// }
+
+
+
+
+
+
+
+// @include position(absolute, 1px, null, null, 1px, null);
+
+
+@mixin position ($position, $top, $right, $bottom, $left, $zindex:null) {
+
+  @if $position == 'null' {}
+  @else { position: $position; }
+
+  @if $top == 'null' {}
+  @else { top: $top; }
+
+  @if $right == 'null' {}
+  @else { right: $right; }
+
+
+  @if $bottom == 'null' {}
+  @else { bottom: $bottom; }
+
+  @if $left == 'null' {}
+  @else { left: $left; }
+
+  @if $zindex == 'null' {}
+  @else { z-index: $zindex; }
+//
+}
+
+
+
+//transition mixin for
+$trans-curve: ease-out;
+
+// http://cubic-bezier.com/ - to generate curve numbers
+$ease-out-custom: "(.77,.86,.67,1)";
+$ease-in-custom: "(.23,.02,.22,.22)";
+
+
+%transition-delay-0 {
+  @include transition-delay(0s);
+}
+
+
+// ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier(x1, y1, x2, y2)]
+@mixin transition($property, $duration, $delay, $timing:default) {
+
+  @include transition-duration(#{$duration}s);
+  @include transition-property($property);
+  @include transition-timing-function($timing);
+
+  @if $delay == 0 {
+    @extend %transition-delay-0;
+  }
+  @else {
+    @include transition-delay(#{$delay}s);
+  }
+
+//
+}
+
+
+
+
+
+
+@mixin clearfix {
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+
+
+
+@mixin filter($filter-type,$filter-amount) {
+  -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type+unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type+unquote('(#{$filter-amount})');
+  -o-filter: $filter-type+unquote('(#{$filter-amount})');
+  filter: $filter-type+unquote('(#{$filter-amount})');
+}
+
+
+
+
+
+
+@mixin gradient-flat ($lgt) {
+  @include filter-gradient($lgt, $lgt, vertical);
+  $experimental-support-for-svg: true;
+  @include background-image(linear-gradient(top, $lgt, $lgt));
+  .ie9 & { filter: none; }
+}
+// use like this   ---   @include gradient-flat(#e7ebd8);
+
+
+
+@mixin gradient ($lgt, $lgb) {
+  background-color: $lgt;
+  @include filter-gradient($lgt, $lgb, vertical);
+  $experimental-support-for-svg: true;
+  @include background-image(linear-gradient(top, $lgt, $lgb));
+  .ie9 & { filter: none; }
+}
+
+
+
+
+@mixin gradient-multi-level {
+  background-color: #01334e;
+  @include filter-gradient(#01334e, #116a94, vertical);
+  $experimental-support-for-svg: true;
+  @include background-image(linear-gradient(top,  #01334e 1%,#025077 18%,#0a5e8a 45%, #116a94 100%));
+  .ie9 & { filter: none; }
+}
+
+
+
+
+@mixin text-shadow-button {
+  @include text-shadow(rgba(0, 0, 0, 0.8) 0 1px 1px);
+}
+
+
+
+
+
+@mixin rotate( $degrees ) {
+  -webkit-transform: rotate(#{$degrees}deg);
+  -moz-transform: rotate(#{$degrees}deg);
+  -ms-transform: rotate(#{$degrees}deg);
+  -o-transform: rotate(#{$degrees}deg);
+  transform: rotate(#{$degrees}deg);
+
+  filter:  progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)});
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)})";
+  zoom: 1;
+}
+
+
+
+
+
+
+
+
+@mixin anything-5050 {
+
+    width: 48%;
+    margin: 0 0 0 2%;
+    float: right;
+
+    &:first-of-type {
+      width: 48%;
+      margin: 0 2% 0 0;
+      float: left;
+    }
+
+//
+}
+
+
+@mixin hover-pointer {
+  &:hover {
+    cursor: pointer;
+  }
+//
+}
+
+
+@mixin focus {
+  &:focus {
+    outline: 0;
+  }
+//
+}
+
+
+
+// Development borders and backgrounds
+
+@mixin bRed { border: 1px solid red; }
+@mixin bgRed { background: red; }
+@mixin bgDarkred { background: darkred; }
+@mixin bLime { border: 1px solid lime; }
+@mixin bgLime { background: lime; }
+@mixin bgLightgreen { background: lightgreen; }
+@mixin bgPink { background: pink; }
+@mixin bPink { border: 1px solid pink; }
+@mixin bGreen { border: 1px solid green; }
+@mixin bBrown { border: 1px solid brown; }
+@mixin bPurple { border: 1px solid purple; }
+
+
+// Development borders and backgrounds
+
+@mixin bg($colorF) {
+  background-color: $colorF;
+}
+
+@mixin b($colorG) {
+  border: 1px solid $colorG;
+}
+
+@mixin bt($colorG) {
+  border-top: 1px solid $colorG;
+}
+
+@mixin bb($colorG) {
+  border-bottom: 1px solid $colorG;
+}
+
+@mixin br($colorG) {
+  border-right: 1px solid $colorG;
+}
+
+
+@mixin bl($colorG) {
+  border-left: 1px solid $colorG;
+}
+
+
+
+@mixin b2($colorG) {
+  border: 2px solid $colorG;
+}
+
+@mixin b3($colorG) {
+  border: 3px solid $colorG;
+}
+
+// AliceBlue  DarkOliveGreen  Indigo  MediumPurple  Purple
+// AntiqueWhite DarkOrange  Ivory MediumSeaGreen  Red
+// Aqua DarkOrchid  Khaki MediumSlateBlue RosyBrown
+// AquaMarine DarkRed Lavender  MediumSpringGreen RoyalBlue
+// Azure  DarkSalmon  LavenderBlush MediumTurquoise SaddleBrown
+// Beige  DarkSeaGreen  LawnGreen MediumVioletRed Salmon
+// Bisque DarkSlateBlue LemonChiffon  MidnightBlue  SandyBrown
+// Black  DarkSlateGray LightBlue MintCream SeaGreen
+// BlanchedAlmond DarkTurquoise LightCoral  MistyRose SeaShell
+// Blue DarkViolet  LightCyan Moccasin  Sienna
+// BlueViolet DeepPink  LightGoldenrodYellow  NavajoWhite Silver
+// Brown  DeepSkyBlue LightGray Navy  SkyBlue
+// BurlyWood  DimGray LightGreen  OldLace SlateBlue
+// CadetBlue  DodgerBlue  LightPink Olive SlateGray
+// Chartreuse FireBrick LightSalmon OliveDrab Snow
+// Chocolate  FloralWhite LightSeaGreen Orange  SpringGreen
+// Coral  ForestGreen LightSkyBlue  OrangeRed SteelBlue
+// CornFlowerBlue Fuchsia LightSlateGray  Orchid  Tan
+// Cornsilk Gainsboro LightSteelBlue  PaleGoldenRod Teal
+// Crimson  GhostWhite  LightYellow PaleGreen Thistle
+// Cyan Gold  Lime  PaleTurquoise Tomato
+// DarkBlue GoldenRod LimeGreen PaleVioletRed Turquoise
+// DarkCyan Gray  Linen PapayaWhip  Violet
+// DarkGoldenRod  Green Magenta PeachPuff Wheat
+// DarkGray GreenYellow Maroon  Peru  White
+// DarkGreen  HoneyDew  MediumAquaMarine  Pink  WhiteSmoke
+// DarkKhaki  HotPink MediumBlue  Plum  Yellow
+// DarkMagenta  IndianRed MediumOrchid  PowderBlue  YellowGreen
+
+
