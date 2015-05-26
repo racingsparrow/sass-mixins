@@ -57,16 +57,16 @@
 
 
 
-//           color    size    transf      spacn line-hig align weight  decora
-// @include type(white, rem(14), uppercase, 1.6px, 1.7em, bold, center, none);
+//           color    size    transf      spacn line-hig align weight  decora  style
+// @include type(white, rem(14), uppercase, 1.6px, 1.7em, center, bold, none, normal);
 
 
-//           color size transf spacn line-hig  align weight  decora
-// @include type(null, null, null, null, null, null, null, null);
+//           color size transf spacn line-hig  align weight  decora style
+// @include type(null, null, null, null, null, null, null, null, null);
 
 
 
-@mixin type($f-color: null, $f-size: null, $f-transform: null, $f-spacing: null, $f-lineheight: null, $f-align: null, $f-weight: null, $f-decoration: null) {
+@mixin type($f-color: null, $f-size: null, $f-transform: null, $f-spacing: null, $f-lineheight: null, $f-align: null, $f-weight: null, $f-decoration: null, $f-style:null) {
 
   @if $f-color == 'null' {}
   @else {
@@ -106,6 +106,11 @@
   @if $f-decoration == 'null' {}
   @else {
     text-decoration: $f-decoration;
+  }
+
+  @if $f-style == 'null' {}
+  @else {
+    font-style: $f-style;
   }
 
 //

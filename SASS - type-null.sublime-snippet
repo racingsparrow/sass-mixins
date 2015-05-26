@@ -1,7 +1,8 @@
 <snippet>
 	<content><![CDATA[
-//           color size transf spacn line-heig  align weight  decora
-@include type(null, null, null, null, null, null, null, null);
+//           color size transf spacn li-hig align weight decora style
+@include type(null, null, null, null, null, null, null, null, null);
+
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
 	<tabTrigger>type-null</tabTrigger>
