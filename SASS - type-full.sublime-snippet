@@ -1,7 +1,7 @@
 <snippet>
 	<content><![CDATA[
-//          color    size    transf  spacn line-hig align weight  decora  style
-@include type(white, 12px, uppercase, 1.6px, 1.7em, center, bold, none, normal);
+//            color    	size    transf 	 	spacn 	lin-heig   align 	weight  decora  style
+@include type(white, 	12px, 	uppercase, 	1.6px, 	1.7em, 	   center, 	bold, 	none, 	normal);
 
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
