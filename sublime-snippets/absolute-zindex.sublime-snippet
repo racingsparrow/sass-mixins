@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+@include position(absolute, 1px$0, null, null, 1px, null);
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pos</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

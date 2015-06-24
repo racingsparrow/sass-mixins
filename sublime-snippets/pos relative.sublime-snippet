@@ -1,11 +1,9 @@
 <snippet>
 	<content><![CDATA[
-//            color    	size    transf 	 	spacn 	lin-heig   align 	weight  decora  style
-@include type(white, 	12px, 	uppercase, 	1.6px, 	1.7em, 	   center, 	bold, 	none, 	normal);
-
+@include position(relative, null, null, null, null, null);
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>type-full</tabTrigger>
+	<tabTrigger>posr</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
 </snippet>

@@ -1,5 +1,4 @@
 
-
 //put snippet files in this folder:
 // /Users/richard/Library/Application Support/Sublime Text 2/Packages/User
 
@@ -27,31 +26,12 @@
 
 
 
-@mixin custom-button {
-    //           color    size    transf      spacn line-hig align weight
-    @include type(white, rem(14), uppercase, 1.6px, 1.7em, bold, center);
-    @include font-light;
-    padding: 10px 26px;
-    border: 2px solid $white;
-    background-color: transparent;
-    display: block;
-
-    content:'Read More';
-
-    &:hover {
-      cursor: pointer;
-    }
-//
-}
 
 
 
 
 
-//converts all px values to rems
-@function rem($size: $font_size) {
-  @return ($size/$font_size)+rem;
-}
+
 
 
 
@@ -63,6 +43,19 @@
 
 //           color size transf spacn line-hig  align weight  decora style
 // @include type(null, null, null, null, null, null, null, null, null);
+
+
+
+
+@mixin bgimage ($img-url, $size, $h, $v ){
+  background-image:url('../images/#{$img-url}');
+  background-repeat: no-repeat;
+  background-size: $size;
+  background-position: $h, $v;
+}
+
+
+
 
 
 
@@ -121,31 +114,6 @@
 
 
 
-// // color size weight align
-
-// @mixin font($f-color: null, $f-size: 13px, $f-weight: normal, $f-align: null) {
-
-//   @if $f-color == 'null' {}
-//   @else {
-//     color: $f-color;
-//   }
-
-//   @if $f-size == 'null' {}
-//   @else {
-//     font-size: $f-size;
-//   }
-
-//   font-weight: $f-weight;
-
-//   @if $f-align == 'null' {}
-//   @else {
-//     text-align: $f-align;
-//   }
-// //
-// }
-
-
-
 
 
 
@@ -186,27 +154,20 @@ $ease-out-custom: "(.77,.86,.67,1)";
 $ease-in-custom: "(.23,.02,.22,.22)";
 
 
-%transition-delay-0 {
-  @include transition-delay(0s);
-}
 
 
 // ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier(x1, y1, x2, y2)]
 @mixin transition($property, $duration, $delay, $timing:default) {
-
   @include transition-duration(#{$duration}s);
   @include transition-property($property);
   @include transition-timing-function($timing);
-
-  @if $delay == 0 {
-    @extend %transition-delay-0;
-  }
-  @else {
-    @include transition-delay(#{$delay}s);
-  }
-
+  @include transition-delay(#{$delay}s);
 //
 }
+
+
+
+
 
 
 
@@ -278,6 +239,24 @@ $ease-in-custom: "(.23,.02,.22,.22)";
   @include text-shadow(rgba(0, 0, 0, 0.8) 0 1px 1px);
 }
 
+
+
+
+@mixin bubbleArrow($bubble-size, $bubble-color) {
+    &:after {
+    border-width: 0 #{$bubble-size/3} #{$bubble-size/2};
+    border-color: $bubble-color transparent;
+    background-image: none;
+
+    content:"";
+    border-style:solid;
+    // reduce the damage in FF3.0
+    display:block;
+    width:0;
+    height: 0;
+    }
+//
+}
 
 
 
@@ -414,5 +393,3 @@ $ease-in-custom: "(.23,.02,.22,.22)";
 // DarkGreen  HoneyDew  MediumAquaMarine  Pink  WhiteSmoke
 // DarkKhaki  HotPink MediumBlue  Plum  Yellow
 // DarkMagenta  IndianRed MediumOrchid  PowderBlue  YellowGreen
-
-

@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+@include transition(transform$0, 0.7, 0, ease);
+]]></content>
+	<!-- // ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier($ease-out-custom)] -->
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>trans</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
+
+
