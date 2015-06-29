@@ -1,6 +1,6 @@
 # sass-mixins
 
-A collection of use sass mixins - and associated folder of sublime snippets which can be fired with keywords.
+A collection of useful sass mixins - and associated folder of sublime snippets which can be fired with keywords.
 
 mixins like these:
 
