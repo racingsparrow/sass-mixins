@@ -58,6 +58,16 @@
 
 
 
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+
 
 @mixin type($f-color: null, $f-size: null, $f-transform: null, $f-spacing: null, $f-lineheight: null, $f-align: null, $f-weight: null, $f-decoration: null, $f-style:null) {
 
