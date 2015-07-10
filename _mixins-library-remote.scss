@@ -57,14 +57,19 @@
 
 
 
-
 @mixin vertical-align {
+  @include transform(translateY(-50%));
   position: relative;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
+
+
+
+@mixin horizontal-align {
+  @include transform(translateX(-50%));
+  left: 50%;
+}
+
 
 
 
@@ -184,18 +189,18 @@ $ease-in-custom: "(.23,.02,.22,.22)";
 
 
 
-@mixin clearfix {
-  &:before,
-  &:after {
-    display: table;
-    content: "";
-    line-height: 0;
-  }
+// @mixin clearfix {
+//   &:before,
+//   &:after {
+//     display: table;
+//     content: "";
+//     line-height: 0;
+//   }
 
-  &:after {
-    clear: both;
-  }
-}
+//   &:after {
+//     clear: both;
+//   }
+// }
 
 
 
@@ -235,11 +240,11 @@ $ease-in-custom: "(.23,.02,.22,.22)";
 
 
 @mixin gradient-multi-level {
-  background-color: #01334e;
-  @include filter-gradient(#01334e, #116a94, vertical);
+  background-color: $um-green-dark;
+  @include filter-gradient($um-green-dark, $um-black, vertical);
   $experimental-support-for-svg: true;
-  @include background-image(linear-gradient(top,  #01334e 1%,#025077 18%,#0a5e8a 45%, #116a94 100%));
-  .ie9 & { filter: none; }
+  @include background-image(linear-gradient(top,  $um-green-dark 0, $um-green-dark 50%,$um-black 51%, $um-black 100%));
+  // .ie9 & { filter: none; }
 }
 
 
@@ -249,24 +254,6 @@ $ease-in-custom: "(.23,.02,.22,.22)";
   @include text-shadow(rgba(0, 0, 0, 0.8) 0 1px 1px);
 }
 
-
-
-
-@mixin bubbleArrow($bubble-size, $bubble-color) {
-    &:after {
-    border-width: 0 #{$bubble-size/3} #{$bubble-size/2};
-    border-color: $bubble-color transparent;
-    background-image: none;
-
-    content:"";
-    border-style:solid;
-    // reduce the damage in FF3.0
-    display:block;
-    width:0;
-    height: 0;
-    }
-//
-}
 
 
 
