@@ -238,12 +238,12 @@ $ease-in-custom: "(.23,.02,.22,.22)";
 
 
 
-
 @mixin gradient-multi-level {
+  $svg-gradient-shim-threshold: 1 !global;
   background-color: $um-green-dark;
-  @include filter-gradient($um-green-dark, $um-black, vertical);
+  @include filter-gradient($um-green-dark, $um-black, horizontal);
   $experimental-support-for-svg: true;
-  @include background-image(linear-gradient(top,  $um-green-dark 0, $um-green-dark 50%,$um-black 51%, $um-black 100%));
+  @include background-image(linear-gradient(0deg,  $um-green-dark 0, $um-green-dark 30%,$um-white 31%, $um-white 95%, $um-black 96%, $um-black 100%));
   // .ie9 & { filter: none; }
 }
 
