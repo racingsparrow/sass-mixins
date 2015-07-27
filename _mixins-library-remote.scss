@@ -32,17 +32,49 @@
 
 
 
+// @mixin clearfix {
+//   &:before,
+//   &:after {
+//     display: table;
+//     content: "";
+//     line-height: 0;
+//   }
+
+//   &:after {
+//     clear: both;
+//   }
+// }
 
 
 
 
 
-//           color    size    transf      spacn line-hig align weight  decora  style
-// @include type(white, rem(14), uppercase, 1.6px, 1.7em, center, bold, none, normal);
+@mixin after-blocks($after-color, $pseudo-height){
+  &:after {
+    @include bg($after-color);
+    @include position(absolute, 0, 0, 0, 50%, -1);
+    content:'';
+    height: $pseudo-height;
+    display: inline-block;
+  }
+}
 
 
-//           color size transf spacn line-hig  align weight  decora style
-// @include type(null, null, null, null, null, null, null, null, null);
+
+@mixin angled-line ($color, $height) {
+  @include bg($color);
+  @include rotate(#{$um-angle}deg);
+  height: $height;
+  width: 1px;
+  content:'';
+}
+
+
+
+//converts all px values to rems
+@function rem($size: $font_size) {
+  @return ($size/$font_size)+rem;
+}
 
 
 
@@ -55,6 +87,22 @@
 }
 
 
+
+@mixin bubbleArrow($bubble-size, $bubble-color) {
+    &:after {
+    border-width: 0 #{$bubble-size/2} #{$bubble-size/2};
+    border-color: $bubble-color transparent;
+    background-image: none;
+
+    content:"";
+    border-style:solid;
+    // reduce the damage in FF3.0
+    display:block;
+    width:0;
+    height: 0;
+    }
+//
+}
 
 
 @mixin vertical-align {
@@ -184,27 +232,6 @@ $ease-in-custom: "(.23,.02,.22,.22)";
 
 
 
-
-
-
-
-
-// @mixin clearfix {
-//   &:before,
-//   &:after {
-//     display: table;
-//     content: "";
-//     line-height: 0;
-//   }
-
-//   &:after {
-//     clear: both;
-//   }
-// }
-
-
-
-
 @mixin filter($filter-type,$filter-amount) {
   -webkit-filter: $filter-type+unquote('(#{$filter-amount})');
   -moz-filter: $filter-type+unquote('(#{$filter-amount})');
@@ -270,6 +297,15 @@ $ease-in-custom: "(.23,.02,.22,.22)";
   zoom: 1;
 }
 
+
+
+
+
+@mixin preserve-3d {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
 
 
 
