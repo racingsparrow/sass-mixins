@@ -46,6 +46,15 @@
 // }
 
 
+@mixin accelerate {
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+}
+
+
+
+
 
 //makes some webtype look smoother - less bold
 @mixin antialiasing( $type:antialiased ) {
@@ -96,6 +105,9 @@
 
 
 
+
+
+
 @mixin bubbleArrow($bubble-size, $bubble-color) {
     &:after {
     border-width: 0 #{$bubble-size/2} #{$bubble-size/2};
@@ -111,6 +123,102 @@
     }
 //
 }
+
+
+
+
+@mixin bubbleArrowDown($bubble-color) {
+    $bubble-size: 50px;
+
+    &:after {
+      @include position(absolute, null, null, -18px, 50%, 2);
+      margin: 0 0 0 -26px;
+
+      border-width: #{$bubble-size/2.2} #{$bubble-size/2.1} 0;
+      border-color: $bubble-color transparent;
+      background-image: none;
+
+      content:"";
+      border-style:solid;
+      // reduce the damage in FF3.0
+      display:block;
+      width:0;
+      height: 0;
+    }
+//
+}
+
+
+@mixin bubbleArrowDownMobile($bubble-color) {
+    $bubble-size: 33px;
+    &:after {
+      @include position(absolute, null, null, -13px, 50%, 2);
+      margin: 0 0 0 -16px;
+
+      border-width: #{$bubble-size/2.2} #{$bubble-size/2.1} 0;
+      border-color: $bubble-color transparent;
+      background-image: none;
+
+      content:"";
+      border-style:solid;
+      // reduce the damage in FF3.0
+      display:block;
+      width:0;
+      height: 0;
+    }
+//
+}
+
+
+
+
+@mixin bubbleArrowMap($bubble-color) {
+    $bubble-size: 30px;
+    &:after {
+      @include rotate(180deg);
+      @include position(absolute, -12px, null, null, 50%, 2);
+      margin: 0 0 0 -16px;
+
+      border-width: #{$bubble-size/2.2} #{$bubble-size/2.1} 0;
+      border-color: $bubble-color transparent;
+      background-image: none;
+
+      content:"";
+      border-style:solid;
+      // reduce the damage in FF3.0
+      display:block;
+      width:0;
+      height: 0;
+    }
+//
+}
+
+
+
+@mixin bubbleArrowBullet($bubble-color) {
+    $bubble-size: 9px;
+    &:after {
+
+      @include rotate(-90deg);
+      @include position(absolute, 23px, null, null, 21px, 2);
+      margin: 0 0 0 -16px;
+
+      border-width: #{$bubble-size/1.4} #{$bubble-size/2.1} 0;
+      border-color: $bubble-color transparent;
+      background-image: none;
+
+      content:"";
+      border-style:solid;
+      // reduce the damage in FF3.0
+      display:block;
+      width:0;
+      height: 0;
+      pointer-events: none;
+    }
+//
+}
+
+
 
 
 @mixin vertical-align {
