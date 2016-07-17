@@ -46,6 +46,51 @@
 // }
 
 
+
+
+
+@mixin gradientObject($gradObj-color1, $gradObj-color2, $gradObj-color3, $gradObj-color4) {
+  //this class creates a 50/50 split gradient with a 3d look, note the slightly differing colors.
+  @include border-radius(0.25em);
+  $var-darken-pct: 10%;
+  white-space: nowrap;
+  color: #FFF;
+  padding: 0.25em 1.6em 0.4em;
+
+  background-color: $gradObj-color4;
+  @include filter-gradient($gradObj-color1, $gradObj-color4, vertical);
+  $experimental-support-for-svg: true;
+  @include background-image(linear-gradient(top, $gradObj-color1 0%, $gradObj-color2 50%, $gradObj-color3 51%, $gradObj-color4 100%));
+  #ie9 & { filter: none; }
+  &:hover { @include background-image(linear-gradient(top, darken($gradObj-color1, $var-darken-pct) 0%, darken($gradObj-color2, $var-darken-pct) 50%, darken($gradObj-color3, $var-darken-pct) 51%, darken($gradObj-color4, $var-darken-pct) 100%)); }
+}
+
+
+
+
+
+@mixin input-placeholder($inp-color) {
+
+  input::-webkit-input-placeholder {
+     color: $inp-color;
+  }
+
+  input:-moz-placeholder { /* Firefox 18- */
+     color: $inp-color;
+  }
+
+  input::-moz-placeholder {  /* Firefox 19+ */
+     color: $inp-color;
+  }
+
+  input:-ms-input-placeholder {
+     color: $inp-color;
+  }
+
+//
+}
+
+
 @mixin accelerate {
   -webkit-transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
@@ -100,7 +145,7 @@
   background-image:url('../images/#{$img-url}');
   background-repeat: no-repeat;
   background-size: $size;
-  background-position: $h, $v;
+  background-position: $h $v;
 }
 
 
@@ -222,14 +267,14 @@
 
 
 @mixin vertical-align {
+  @include position(absolute, 50%, 0, 0, 0, null);
   @include transform(translateY(-50%));
-  position: relative;
-  top: 50%;
 }
 
 
 
 @mixin horizontal-align {
+  position: relative;
   @include transform(translateX(-50%));
   left: 50%;
 }
